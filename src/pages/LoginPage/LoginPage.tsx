@@ -113,7 +113,12 @@ export const LoginPage = () => {
             </button>
           </div>
 
-          <button type="submit" className="login-button" disabled={authLoading}>
+          <button
+            type="submit"
+            className="login-button"
+            disabled={authLoading}
+            onClick={() => navigate(paths.dashboard)}
+          >
             {authLoading ? (
               <>
                 <span className="loading-spinner"></span>

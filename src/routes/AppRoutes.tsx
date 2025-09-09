@@ -3,22 +3,19 @@ import { paths } from "./paths";
 import { ProtectedRoute } from "./ProtectedRoute";
 import { LoginPage } from "../pages/LoginPage/LoginPage";
 import { RegisterPage } from "../pages/RegisterPage/RegisterPage";
+import { DashboardPage } from "../pages/DashboardPage/DashboardPage";
 
 export const AppRoutes = () => {
-  const MenuAdmin = () => {
-    return <div>MenuAdmin</div>;
-  };
-
   return (
     <Routes>
       <Route path={paths.home} element={<LoginPage />} />
       <Route path={paths.login} element={<LoginPage />} />
       <Route path={paths.register} element={<RegisterPage />} />
       <Route
-        path={paths.menuAdmin}
+        path={paths.dashboard}
         element={
           <ProtectedRoute>
-            <MenuAdmin />
+            <DashboardPage />
           </ProtectedRoute>
         }
       />

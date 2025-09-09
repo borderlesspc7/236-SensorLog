@@ -1,0 +1,334 @@
+.water-tank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.water-tank.small {
+  width: 200px;
+  height: 300px;
+}
+
+.water-tank.medium {
+  width: 300px;
+  height: 400px;
+}
+
+.water-tank.large {
+  width: 400px;
+  height: 500px;
+}
+
+.tank-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tank-structure {
+  position: relative;
+  width: 120px;
+  height: 100%;
+  background: #e8f4f8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.water-level {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 0 8px 8px;
+  overflow: hidden;
+}
+
+.water-surface {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.3) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.3) 100%
+  );
+  animation: waterShimmer 3s ease-in-out infinite;
+}
+
+.water-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  animation: ripple 2s ease-out infinite;
+}
+
+@keyframes waterShimmer {
+  0%,
+  100% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    width: 20px;
+    height: 20px;
+    opacity: 1;
+  }
+  100% {
+    width: 60px;
+    height: 60px;
+    opacity: 0;
+  }
+}
+
+.tank-frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.tank-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(180deg, #d1d9e6 0%, #b8c6db 100%);
+  border-radius: 8px 8px 0 0;
+}
+
+.tank-sides {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  right: 0;
+  bottom: 8px;
+}
+
+.tank-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(90deg, #c8d4e0 0%, #a8b8c8 100%);
+  border-radius: 0 0 0 4px;
+}
+
+.tank-right {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(90deg, #a8b8c8 0%, #c8d4e0 100%);
+  border-radius: 0 0 4px 0;
+}
+
+.tank-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 8px;
+  background: linear-gradient(0deg, #a8b8c8 0%, #d1d9e6 100%);
+  border-radius: 0 0 8px 8px;
+}
+
+.level-indicators {
+  position: absolute;
+  right: -40px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+.level-marker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+}
+
+.level-marker::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  width: 10px;
+  height: 2px;
+  background: #999;
+  border-radius: 1px;
+}
+
+.current-level {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 12px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  backdrop-filter: blur(10px);
+}
+
+.level-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  line-height: 1;
+}
+
+.level-status {
+  font-size: 12px;
+  font-weight: 500;
+  color: #7f8c8d;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.water-drops {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.drop {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  animation: dropFall 3s linear infinite;
+}
+
+.drop-1 {
+  left: 20%;
+  animation-delay: 0s;
+}
+
+.drop-2 {
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.drop-3 {
+  left: 80%;
+  animation-delay: 2s;
+}
+
+@keyframes dropFall {
+  0% {
+    top: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.tank-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 16px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 16px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.info-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: #7f8c8d;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2c3e50;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .water-tank {
+    padding: 16px;
+  }
+
+  .water-tank.medium {
+    width: 250px;
+    height: 350px;
+  }
+
+  .level-indicators {
+    right: -30px;
+  }
+
+  .level-marker {
+    font-size: 10px;
+  }
+
+  .current-level {
+    top: 10px;
+    left: 10px;
+    padding: 8px 12px;
+  }
+
+  .level-value {
+    font-size: 20px;
+  }
+
+  .tank-info {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

@@ -2,5 +2,5 @@ export const paths = {
   home: "/",
   login: "/login",
   register: "/register",
-  menuAdmin: "/menu-admin",
+  dashboard: "/dashboard",
 };

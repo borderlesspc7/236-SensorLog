@@ -206,6 +206,7 @@ export const RegisterPage = () => {
             type="submit"
             className="register-button"
             disabled={authLoading}
+            onClick={() => navigate(paths.dashboard)}
           >
             {authLoading ? (
               <>
